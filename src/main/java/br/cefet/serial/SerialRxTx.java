@@ -26,16 +26,19 @@ public class SerialRxTx implements SerialPortEventListener{
     
     private static final int TIME_OUT = 1000;
     private static final int DATA_RATE = 9600;
-    
+
+    private static final int LEFT = 0;
+    private static final int RIGHT = 1;
+
     private String serialPortName = "COM5";
 
     public boolean iniciaSerial(){
-        boolean status = false;
+        boolean status;
         try{
             CommPortIdentifier portId = null;
             Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
             
-            while (portId == null && portEnum.hasMoreElements()){
+            while (portEnum.hasMoreElements()){
                 CommPortIdentifier currPortId = (CommPortIdentifier) portEnum.nextElement();
                 
                 if (currPortId.getName().equals(serialPortName) || currPortId.getName().startsWith(serialPortName)){
@@ -107,7 +110,18 @@ public class SerialRxTx implements SerialPortEventListener{
                     
                     if (input.ready()){
                         protocolo.setLeituraComando(input.readLine());
-                        System.out.println(protocolo.getLeituraComando());
+                        final String leituraComando = protocolo.getLeituraComando();
+                        System.out.println(leituraComando);
+
+                        //TODO: Comando das setas
+                        if(leituraComando.equals("X")){
+                            acionaSeta(LEFT);
+                        }
+
+                        if(leituraComando.equals("Y")){
+                            acionaSeta(RIGHT);
+                        }
+
                     }
 
                     break;
@@ -117,6 +131,15 @@ public class SerialRxTx implements SerialPortEventListener{
             }
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    private void acionaSeta(int seta) {
+        if(seta == LEFT){
+            //aciona seta
+        }
+        if(seta == RIGHT){
+            //aciona seta
         }
     }
 
