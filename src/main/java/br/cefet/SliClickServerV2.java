@@ -1,32 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package sliclickserverv2;
+package br.cefet;
 
-import Serial.SerialRxTx;
-
+import br.cefet.serial.SerialRxTx;
 
 /**
- *
  * @author User
  */
 public class SliClickServerV2 {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        SerialRxTx serial = new SerialRxTx();
-        
-        if (serial.iniciaSerial()){
-            while(true){
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		SerialRxTx serial = new SerialRxTx();
 
-            }
-        } else {
-            
-        }
-        
-    }
+		if (serial.iniciaSerial()) {
+			while (true) {
+
+			}
+		} else {
+
+		}
+
+	}
 }
